@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OwmApp</string>
+    <string name="text_down">Для определения геоданных убедитесь,\n что на вашем телефоне включена\n функция геолокации</string>
+    <string name="or">или</string>
+    <string name="select_geolocation"><u>Выберите геолокацию</u></string>
+    <string name="next">Далее</string>
+    <string name="today">Сегодня </string>
+</resources>
