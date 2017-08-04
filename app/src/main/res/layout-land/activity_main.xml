@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.almaz.owmapp.MainActivity"
+            android:scrollbars="none">
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
-    tools:context="com.almaz.owmapp.MainActivity">
+    android:background="@drawable/back">
 
 
     <TextView
@@ -26,20 +30,12 @@
         android:textColor="@color/white"
         android:textSize="30dp"/>
 
-    <TextView
-        android:id="@+id/or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:text="@string/or"/>
-
     <EditText
         android:id="@+id/city_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/or"
+        android:layout_below="@id/date"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
         android:layout_marginBottom="10dp"
@@ -47,6 +43,18 @@
         android:padding="10dp"
         android:background="@drawable/edit_text_style"
         android:inputType="textMultiLine"/>
+
+    <TextView
+        android:id="@+id/or"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/city_name"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/or"/>
+
+
 
     <TextView
         android:id="@+id/search_geo"
@@ -73,10 +81,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/next"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:text="@string/text_down"/>
 </RelativeLayout>
+</ScrollView>
