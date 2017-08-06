@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button next;
     String city;
     String lon, lat;
+    boolean flag = false;
 
     private LocationManager locationManager;
 
@@ -33,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState != null){
-            lat = savedInstanceState.getString("lat");
-            lon = savedInstanceState.getString("lon");
-        }
         setContentView(R.layout.activity_main);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -61,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 city = cityName.getText().toString();
+                flag = true;
             }
 
             @Override
@@ -75,14 +73,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent i = new Intent(MainActivity.this, SecondActivity.class);
 
-
-                if(city!=null) {
-                    i.putExtra("EXTRA_NAME", city);
-                }
-                if(lat!=null && lon!=null){
-                    i.putExtra("EXTRA_LON", lon);
-                    i.putExtra("EXTRA_LAT", lat);
-                }
+                i.putExtra("EXTRA_NAME", city);
+                i.putExtra("EXTRA_LON", lon);
+                i.putExtra("EXTRA_LAT", lat);
+                i.putExtra("EXTRA_FLAG", flag);
                 startActivity(i);
 
             }
@@ -158,17 +152,27 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Местопложение найдено!\nНажмите 'Далее'",Toast.LENGTH_LONG).show();
     }
 
+
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("lon",lon);
         outState.putString("lat",lat);
+        outState.putBoolean("flag",flag);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         locationManager.removeUpdates(locationListener);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        lat = savedInstanceState.getString("lat");
+        lon = savedInstanceState.getString("lon");
+        flag = savedInstanceState.getBoolean("flag");
     }
 
 }

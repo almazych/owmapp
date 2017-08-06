@@ -84,7 +84,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
 
-        getData().enqueue(new Callback<Data>() {
+        getDat().enqueue(new Callback<Data>() {
             public void onResponse(Call<Data> call, Response<Data> response) {
                 progressBar.setVisibility(View.GONE);
 
@@ -228,8 +228,8 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-    public Call<Data> getData() {
-        if(getIntent().getStringExtra("EXTRA_NAME")!=null) {
+    public Call<Data> getDat() {
+        if(getIntent().getBooleanExtra("EXTRA_FLAG",false)) {
             return App.getApi().getData(getIntent().getStringExtra("EXTRA_NAME"), API_KEY, "metric", "ru");
         }else if(getIntent().getStringExtra("EXTRA_LAT")!=null&&getIntent().getStringExtra("EXTRA_LON")!=null){
             return App.getApi().getDataFromGeo(getIntent().getStringExtra("EXTRA_LAT"), getIntent().getStringExtra("EXTRA_LON"), API_KEY, "metric", "ru");
