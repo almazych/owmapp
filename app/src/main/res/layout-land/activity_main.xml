@@ -63,6 +63,8 @@
         android:layout_below="@id/or"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
+        android:clickable="true"
+        android:onClick="onClicked"
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:text="@string/select_geolocation"/>
